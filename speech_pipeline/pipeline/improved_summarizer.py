@@ -6,24 +6,20 @@ from transformers import pipeline, AutoTokenizer
 from sentence_transformers import SentenceTransformer, util
 import nltk
 
-# pont egyszer lefutó letöltés ha kell
 try:
     nltk.data.find("tokenizers/punkt")
 except LookupError:
     nltk.download("punkt")
 
-# új NLTK-nál kellhet
 nltk.download('punkt_tab')
 try:
     nltk.data.find("tokenizers/punkt_tab")
 except LookupError:
     nltk.download("popular")
 
-# embedding modell (kicsi, gyors, jó)
 _EMB_MODEL_NAME = "all-MiniLM-L6-v2"
 _emb_model = SentenceTransformer(_EMB_MODEL_NAME)
 
-# abstractive summarizer (opcionális, konfigurálható)
 _ABSTR_MODEL_NAME = "facebook/bart-large-cnn"
 _abstr_summarizer = None  # lazy init
 
@@ -75,7 +71,6 @@ def improved_summarize(text: str, use_abstractive: bool = True,
     if use_abstractive:
         try:
             summarizer = _get_abstr_summarizer()
-            # ha túl hosszú a extractive_summary, chunkoljuk token-szinten (simple fallback)
             out = summarizer(extractive_summary, max_length=abstr_max_length, min_length=abstr_min_length, do_sample=False)
             return out[0]["summary_text"]
         except Exception as e:

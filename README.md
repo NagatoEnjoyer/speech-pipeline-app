@@ -13,7 +13,7 @@ A feldolgozás lépései **sorban, automatikusan** történnek, a felhasználó 
 
 ## Követelmények
 
-- **Python 3.9+**
+- **Python 3.9**
 - FFmpeg telepítve és elérhető a PATH-ban
 - Virtuális környezet ajánlott
 
@@ -69,6 +69,17 @@ A projekt a következő külső könyvtárakat és modelleket használja:
 - **transformers** – summarizer és fordító modellekhez
 - **sentence-transformers** – extractive summarizer embeddingekhez
 - **accelerate** – nagyobb modellek CPU/GPU kezeléséhez
+
+## Modulok és feladatuk
+
+1. **app.py** - A program fő futását biztosítja, meghívja a többi modult. Biztosítja a front-en és a back-end kommunikációját.
+2. **queue_manager.py** - Feladatkezelő modul. Lehetővé teszi, hogy a hosszabb ideig futó műveletek háttérben, aszinkron módon fussanak, miközben az állapotuk lekérdezhető.
+3. **convert.py** - A feltöltött audiofájlokat egységes .wav formátumba alakítja. Ez biztosítja, hogy a további feldolgozás egységes formátumon történjen.
+4. **denoise.py** - A konvertált .wav fájlok zajszűrését végzi, így a felismeréshez tisztább hanganyagot ad tovább.
+5. **asr.py** - Az Automatic Speech Recognition modul. A zajszűrt hangfájlból szöveget generál a Whisper modell segítségével.
+6. **improved_summarizer** - A felismerett szöveget automatikusan összegzi, hogy a felhasználó rövid és érthető kivonatot kapjon. Absztraktív és extraktív összegzés kombinációját használja.
+7. **translator.py** - A szövegfordításért felelős modul. A Facebook M2M100 neurális fordító modellt használja, több nyelv közti fordítást támogatva.
+8. **app.js** - A kliensoldali JavaScript. Kezeli a fájlfeltöltést, a háttérben futó feladatok állapotának lekérdezését, a feldolgozott szöveg megjelenítését, az összegzés fordítását, valamint a letöltési funkciókat.
 
 ## Ismert korlátok
 

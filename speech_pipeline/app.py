@@ -1,14 +1,4 @@
-#Parikás krumpli recept:
-#1. Zsírt melegítünk egy lábasban.
-#2. Hozzáadjuk a finomra vágott vörös- és fokhagymát, a  babérlevelet és közepes hőfokon 7 percig dinszteljük.
-#3. Hozzáadjuk a az apró kockákra vágott paprikát és paradicsomot
-#4 További 2 perc pirítás után a 3-4 cm-es darabokra vágott krumplit és a 0,5 cm-es karikákra vágott kolbászt is.
-#5 Közepesen erős hőfokon 3 percig pirítjuk.
-#6 Ízesítjük a daráltpaprika-krémmel, a fűszerpaprikával, a köménnyel, sózzuk, borsozzuk.
-#7 Felöntjük a vízzel és közepes hőfokon addig főzzük, amíg a krumpli megpuhul.
-#8 Hozzáadjuk a karikákra vágott virslit és a burgonyapehellyel beállítjuk a szaft sűrűségét.
-#9 2 percig még főzzük, hogy a virsli is átmelegedjen
-#10 Friss kenyérrel és savanyúsággal tálaljuk.
+#Parikás krumpli recept:made by StreetKitchen
 
 from flask import Flask, render_template, request, send_file, jsonify
 import os
