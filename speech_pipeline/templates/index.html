@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <title>Hangfeldolgozás</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Hangfeldolgozás</h1>
+    <form id="uploadForm">
+        <input type="file" name="file" id="fileInput">
+        <button type="submit">Feltöltés</button>
+    </form>
+
+    <div id="status">
+        <span id="statusText">Várakozás...</span>
+        <div id="spinner" class="spinner" style="display:none;"></div>
+    </div>
+
+    <div id="summary" style="white-space: pre-wrap; margin-top: 10px;"></div>
+    <button id="downloadBtn" style="display:none">Letöltés</button>
+
+    <div id="translator" style="display:none; margin-top: 10px;">
+        <label for="sourceLang">Forrás nyelv:</label>
+        <select id="sourceLang">
+            <option value="en">Angol</option>
+            <option value="hu">Magyar</option>
+            <option value="de">Német</option>
+            <option value="fr">Francia</option>
+        </select>
+
+        <label for="targetLang">Cél nyelv:</label>
+        <select id="targetLang">
+            <option value="en">Angol</option>
+            <option value="hu">Magyar</option>
+            <option value="de">Német</option>
+            <option value="fr">Francia</option>
+        </select>
+
+        <button id="translateBtn" onclick="queueTranslate()">Fordítás</button>
+    </div>
+
+    <div id="translationSection">
+        <span id="translationStatus"></span>
+        <div id="spinnerTranslation" class="spinner" style="display:none;"></div>
+        <p id="translationResult"></p>
+        <button id="downloadTranslationBtn" style="display:none;">Fordítás letöltése</button>
+    </div>
+
+
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
